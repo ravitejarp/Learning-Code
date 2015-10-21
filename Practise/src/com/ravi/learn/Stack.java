@@ -11,6 +11,10 @@ public class Stack {
 		this.maxSize = maxSize;
 	}
 
+	public boolean isEmpty() {
+		return top == -1 ? true : false;
+	}
+
 	// public void push(String value) {
 	// if (top != 0) {
 	// top++;
