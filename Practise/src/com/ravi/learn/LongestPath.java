@@ -34,8 +34,12 @@ public class LongestPath {
 		List<String> finalList = new ArrayList<String>();
 		int length = 0;
 		String path = "";
-		// int[][] arr = { { 1, 2, 3 }, { 3, 5, 4 }, { 4, 6, 7 } };
-		int[][] arr = { { 1, 2, 9 }, { 5, 3, 8 }, { 4, 6, 7 } };
+//		 int[][] arr = { { 1, 2, 3 },
+//				 		{ 3, 5, 4 },
+//				 		{ 4, 6, 7 } };
+		int[][] arr = { { 1, 2, 9 },
+						{ 5, 3, 8 },
+						{ 4, 6, 7 } };
 		for (int i = 0; i < arr.length; i++) {
 			for (int j = 0; j < arr.length; j++) {
 				finalList.add(recursiveCaller(arr, i, j));

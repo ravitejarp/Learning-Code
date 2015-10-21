@@ -31,7 +31,7 @@ public class QueueImpl {
 
 	public int getHead() {
 		if (front >= 0)
-			return arr[front];	
+			return arr[front];
 
 		return -1;
 
@@ -50,8 +50,10 @@ public class QueueImpl {
 		int tail = rear;
 
 		while (first <= tail) {
-			System.out.print(arr[first] + ",");
+			System.out.print(arr[first]);
 			first++;
+			if (first <= tail)
+				System.out.print(",");
 		}
 	}
 }

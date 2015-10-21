@@ -32,7 +32,7 @@ public class Matrix {
 				}
 			}
 			if (flag1) {
-				System.out.println("Value is:" + arr[i][i]);
+				System.out.println("Value is:" + arr[i][i]+"Index:"+i+","+i);
 				break;
 			}
 			int j = i;

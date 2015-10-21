@@ -9,6 +9,9 @@ public class Isomers {
 		for (int i = 0; i < s1.length(); i++)
 			isomerMap.put(s1.charAt(i), s2.charAt(i));
 
+		
+
+		
 		for (int i = 0; i < s1.length(); i++) {
 			if (!(isomerMap.get(s1.charAt(i)) == s2.charAt(i))) {
 				return false;
@@ -19,8 +22,8 @@ public class Isomers {
 	}
 
 	public static void main(String[] args) {
-		String s1 = "aab";
-		String s2 = "xyz";
+		String s1 = "abcx";
+		String s2 = "xyzg";
 		if (s1.length() != s2.length()) {
 			System.out.println("Strings are not isomers");
 		} else {

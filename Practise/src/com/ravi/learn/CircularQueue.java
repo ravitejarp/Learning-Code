@@ -51,11 +51,13 @@ public class CircularQueue {
 	public void display() {
 		int first = front;
 		int tail = rear;
+		System.out.println();
 
-		while (first <= maxSize) {
-			System.out.print(arr[first] + ",");
-			first++;
-		}
+		if (first != -1)
+			while (first < maxSize) {
+				System.out.print(arr[first] + ",");
+				first++;
+			}
 		if (first == maxSize) {
 			first = 0;
 			while (first <= tail) {

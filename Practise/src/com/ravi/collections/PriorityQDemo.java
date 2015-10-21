@@ -22,10 +22,10 @@ public class PriorityQDemo {
 		System.out.println(36 / 6 * (2 + 2 + 2));
 		System.out.println("==================================");
 
-		/*
-		 * Iterator<Integer> it = pp.iterator(); while (it.hasNext())
-		 * System.out.print(it.next() + "\t");
-		 */
+		
+		  Iterator<Integer> it = pp.iterator(); while (it.hasNext())
+		  System.out.print(it.next() + "\t");
+		 
 
 		for (int i : sample)
 			System.out.println(pp.poll());

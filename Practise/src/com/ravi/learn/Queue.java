@@ -18,14 +18,14 @@ public class Queue {
 
 		CircularQueue c = new CircularQueue(5);
 		c.enQueue(12);
-		c.enQueue(32);
-		c.enQueue(3343);
-		c.enQueue(3132);
-		c.enQueue(2);
-		c.enQueue(21324);
-		System.out.println(c.deQueue());
-		c.enQueue(221);
-		c.enQueue(322);
+//		c.enQueue(32);
+//		c.enQueue(3343);
+//		c.enQueue(3132);
+//		c.enQueue(2);
+//		c.enQueue(21324);
+//		System.out.println(c.deQueue());
+//		c.enQueue(221);
+//		c.enQueue(322);
 		c.display();
 	}
 
