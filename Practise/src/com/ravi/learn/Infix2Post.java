@@ -1,29 +1,55 @@
 package com.ravi.learn;
 
 public class Infix2Post {
+	public static int getPrecedence(char c) {
+		switch (c) {
+		case '+':
+		case '-':
+			return 1;
+		case '*':
+		case '/':
+		case '%':
+			return 2;
+		case '(':
+		case ')':
+			return 3;
+		default:
+			return 0;
+		}
+	}
 
 	public static void main(String[] args) {
 		int currentPrecedence = 0;
-		int nextPrecedence = 0;
-		String s = "A+B*(C-D)";
+		int previousPrecedence = 0;
+//		 String s = "A+B*(C-D)";
+//		String s = "A+B*C";
+		
+		 String s = "A+B-C";
 		Stack st = new Stack(s.length());
 		for (int i = 0; i < s.length(); i++) {
 			char charAt = s.charAt(i);
 			if (charAt == '%' || charAt == '+' || charAt == '*'
-					|| charAt == '/') {
+					|| charAt == '/' || charAt == '-') {
 				if (st.isEmpty()) {
 					st.push(charAt);
 				} else {
 					char peek = st.peek();
 					currentPrecedence = getPrecedence(charAt);
-					nextPrecedence = getPrecedence(peek);
-					if (currentPrecedence < nextPrecedence) {
+					previousPrecedence = getPrecedence(peek);
+					if (currentPrecedence >= previousPrecedence) {
+						if (i + 2 < s.length()) {
+							char charAt2 = s.charAt(i + 2);
+							if (getPrecedence(charAt2) >= getPrecedence(charAt)) {
+								st.push(charAt);
+							} else if (getPrecedence(charAt2) == 0) {
+								st.push(charAt);
+							} else {
+								System.out.print(charAt);
+							}
+						} else
+							System.out.print(charAt);
+					} else {
 						st.push(charAt);
-					}
-					else{
-						while(currentPrecedence < nextPrecedence){
-							st.pop();
-						}
 					}
 				}
 
@@ -39,19 +65,8 @@ public class Infix2Post {
 				System.out.print(charAt);
 			}
 		}
-	}
-
-	public static int getPrecedence(char c) {
-		switch (c) {
-		case '+':
-		case '-':
-			return 1;
-		case '*':
-		case '/':
-		case '%':
-			return 2;
-		default:
-			return 0;
+		while (!st.isEmpty()) {
+			System.out.print(st.pop());
 		}
 	}
 

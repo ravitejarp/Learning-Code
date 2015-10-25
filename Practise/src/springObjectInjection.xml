@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="triangle" class="com.ravi.spring.TriangleObjectInjection"
+		name="triangle-name">
+		<property name="pointA" ref="zeroPoint"></property>
+		<property name="pointB">
+
+			<bean class="com.ravi.spring.Point">
+				<property name="x" value="-20"></property>
+				<property name="y" value="0"></property>
+
+			</bean>
+
+		</property>
+		<property name="pointC">
+			<bean class="com.ravi.spring.Point">
+				<property name="x" value="0"></property>
+				<property name="y" value="20"></property>
+			</bean>
+		</property>
+
+	</bean>
+
+
+	<bean id="zeroPoint" class="com.ravi.spring.Point">
+		<property name="x" value="0"></property>
+		<property name="y" value="0"></property>
+
+	</bean>
+	<alias name="triangle" alias="triangle-alias" />
+</beans>
