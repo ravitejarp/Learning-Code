@@ -6,36 +6,43 @@ public class MergeSort {
 	int counter = 0;
 	private int number;
 
-	public void sort(long[] values) {
+	public long sort(long[] values) {
 		this.numbers = values;
 		number = values.length;
 		this.helper = new long[number];
-		mergesort(0, number - 1);
+		long mergesort = mergesort(0, number - 1);
+		return mergesort;
 	}
 
-	private void mergesort(int low, int high) {
+	private long mergesort(int low, int high) {
 		// check if low is smaller then high, if not then the array is sorted
 		if (low < high) {
 			// Get the index of the element which is in the middle
 			int middle = low + (high - low) / 2;
 			// Sort the left side of the array
-			mergesort(low, middle);
+			long left = mergesort(low, middle);
 			// Sort the right side of the array
-			mergesort(middle + 1, high);
+			long right = mergesort(middle + 1, high);
 			// Combine them both
-			merge(low, middle, high);
-		} else if (high - low == 1) {
+			long split = merge(low, middle, high);
+
+			return left + right + split;
+		}
+		if (high - low == 1) {
 			if (numbers[high] < numbers[low]) {
 				long l = numbers[high];
 				numbers[high] = numbers[low];
 				numbers[low] = l;
-				counter++;
+				return 1;
+			} else {
+				return 0;
 			}
+		} else {
+			return 0;
 		}
-		System.out.println(counter);
 	}
 
-	private void merge(int low, int middle, int high) {
+	private int merge(int low, int middle, int high) {
 
 		// Copy both parts into the helper array
 		for (int i = low; i <= high; i++) {
@@ -67,6 +74,8 @@ public class MergeSort {
 			k++;
 			i++;
 		}
+
+		return counter;
 
 	}
 }
