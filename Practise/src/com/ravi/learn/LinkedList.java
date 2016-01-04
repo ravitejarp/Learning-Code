@@ -28,6 +28,24 @@ public class LinkedList {
 		}
 	}
 
+	public int deleteSpecific(int toDelete) {
+		Link temp = head;
+		if (temp.data == toDelete) {
+			head = temp.next;
+			return temp.data;
+		}
+		while (temp.next != null) {
+			if (temp.next.data == toDelete) {
+				System.out.println("Deleted:" + temp.next.data);
+				int data = temp.next.data;
+				temp.next = temp.next.next;
+				return data;
+			}
+			temp = temp.next;
+		}
+		return -1;
+	}
+
 	public void delete() {
 		System.out.println("Deleted:" + head.data);
 		head = head.next;
@@ -49,6 +67,10 @@ public class LinkedList {
 		l.display();
 
 		l.delete();
+		l.display();
+		System.out.println(l.deleteSpecific(11111));
+		l.display();
+		System.out.println(l.deleteSpecific(1220));
 		l.display();
 
 	}
