@@ -3,30 +3,54 @@ package com.ravi.datastructures;
 public class LinkedList<T> {
 	Node<T> head;
 
-	public LinkedList(T data) {
+	public LinkedList() {
 		head = new Node<T>();
-		head.data = data;
 	}
 
 	public T remove(T data) {
+		/**
+		 * Node<T> temp = head; Node<T> temp1 = temp; while (temp.data != data)
+		 * { if (temp.next == null) { return null; } else { temp1 = temp; temp =
+		 * temp.next; } } if (temp == head) { head = head.next;
+		 * 
+		 * } else { temp1.next = temp.next; }
+		 * 
+		 * return temp.data;
+		 */
+
 		Node<T> temp = head;
-		Node<T> temp1 = head;
+		Node<T> temp1 = temp;
 		while (temp != null) {
-			if (temp.data == data) {
-				temp1.next = temp;
-				head = temp1;
-				return temp.data;
+			if (temp.getData() == data) {
+				temp1.setNext(temp.getNext());
+				return temp.getData();
 			}
 			temp1 = temp;
-			temp = temp.next;
+			temp = temp.getNext();
+		}
+		return null;
+	}
+
+	public T remove() {
+		if (!isEmpty()) {
+			T data = head.getData();
+			head = head.getNext();
+			return data;
+		}
+		return null;
+	}
+
+	public T getHeadData() {
+		if (!isEmpty()) {
+			return head.getData();
 		}
 		return null;
 	}
 
 	public void insert(T data) {
 		Node<T> temp1 = new Node<T>();
-		temp1.data = data;
-		temp1.next=head;
+		temp1.setData(data);
+		temp1.setNext(head);
 		head = temp1;
 
 	}
@@ -34,9 +58,27 @@ public class LinkedList<T> {
 	public void printList() {
 		Node<T> temp = head;
 		while (temp != null) {
-			System.out.print(temp.data + "-->");
-			temp = temp.next;
+			System.out.print(temp.getData() + "\t");
+			temp = temp.getNext();
 		}
 		System.out.println();
+	}
+
+	public void sortedList() {
+
+	}
+
+	public boolean isEmpty() {
+		return head == null ? true : false;
+	}
+
+	public int getSize() {
+		Node<T> temp = head;
+		int counter = 0;
+		while (temp != null) {
+			counter++;
+			temp = temp.getNext();
+		}
+		return counter;
 	}
 }

@@ -1,16 +1,27 @@
 package com.ravi.datastructures;
 
 public class Node<T> {
-	Node<T> next;
-	T data;
+	private Node<T> next;
+	private T data;
 
 	public Node() {
-		next = null;
-		data = null;
+		setNext(null);
+		setData(null);
 	}
 
-	public Node(Node<T> next, T data) {
-		this.next = next;
+	public T getData() {
+		return data;
+	}
+
+	public void setData(T data) {
 		this.data = data;
+	}
+
+	public Node<T> getNext() {
+		return next;
+	}
+
+	public void setNext(Node<T> next) {
+		this.next = next;
 	}
 }
