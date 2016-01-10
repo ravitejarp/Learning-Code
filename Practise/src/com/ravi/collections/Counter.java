@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Counter {
 	public static void main(String[] args) {
 		Counter c = new Counter();
-		c.cl
+		// c.cl
 		System.out.println(getTheCount("abba.#$bcbdbabdbdbabababcbcbab"));
 	}
 
