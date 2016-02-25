@@ -9,7 +9,7 @@ public class SrinathTest {
 	public static void main(String[] args) {
 		int x;
 		 List<String> test = new ArrayList<String>();
-		 JeevaneTest.test(test);
+		 SampleTest.test(test);
 		 System.out.println(test);
 //		x = 50;
 //		JeevaneTest.t(x);
