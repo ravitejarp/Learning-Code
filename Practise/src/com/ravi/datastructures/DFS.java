@@ -32,6 +32,7 @@ public class DFS<T> {
 			}
 
 		} while (!s.isEmpty());
+		s.clear();
 	}
 
 	public static void main(String[] args) {
