@@ -21,11 +21,32 @@ public class DFTraversalUsingStack {
         a.setLeftTree(b);
         a.setRightTree(c);
 
+        printInOrder(a);
+        System.out.println();
+        preOrder(a);
+        System.out.println();
+        postOrder(a);
+        System.out.println();
+
         c.setLeftTree(d);
         c.setRightTree(e);
 
+        printInOrder(a);
+        System.out.println();
+        preOrder(a);
+        System.out.println();
+        postOrder(a);
+        System.out.println();
+
         d.setLeftTree(f);
         d.setRightTree(h);
+
+        printInOrder(a);
+        System.out.println();
+        preOrder(a);
+        System.out.println();
+        postOrder(a);
+        System.out.println();
 
         e.setLeftTree(g);
 
@@ -39,25 +60,27 @@ public class DFTraversalUsingStack {
     }
 
     public static <T> void printInOrder(BSTTreeNode<T> root) {
+        System.out.println("+++++IN Order+++++++");
         if (root == null) {
             return;
         }
-        Set<BSTTreeNode> visitedNode = new HashSet<>();
+        Set<BSTTreeNode<T>> visitedNode = new HashSet<>();
         Stack<BSTTreeNode<T>> stack = new java.util.Stack<>();
         stack.push(root);
         while (!stack.empty()) {
-            BSTTreeNode<T> pop = stack.pop();
-            if (pop.getLeftTree() == null && pop.getRightTree() == null) {
-                System.out.print(pop + "->");
-            } else if (visitedNode.contains(pop)) {
-                System.out.print(pop + "->");
+            BSTTreeNode<T> top = stack.pop();
+            if (top.getLeftTree() == null && top.getRightTree() == null) {
+                System.out.print(top + "->");
+            } else if (visitedNode.contains(top)) {
+                System.out.print(top + "->");
             } else {
-                visitedNode.add(pop);
-                if (root.getRightTree() != null) {
-                    printInOrder(root.getRightTree());
+                visitedNode.add(top);
+                if (top.getRightTree() != null) {
+                    stack.push(top.getRightTree());
                 }
-                if (root.getLeftTree() != null) {
-                    printInOrder(root.getLeftTree());
+                stack.push(top);
+                if (top.getLeftTree() != null) {
+                    stack.push(top.getLeftTree());
                 }
 
             }
@@ -65,28 +88,58 @@ public class DFTraversalUsingStack {
     }
 
     public static <T> void preOrder(BSTTreeNode<T> root) {
+        System.out.println("+++++Pre Order+++++++");
         if (root == null) {
             return;
         }
-        System.out.println(root.getData() + "->");
-        if (root.getLeftTree() != null) {
-            printInOrder(root.getLeftTree());
-        }
-        if (root.getRightTree() != null) {
-            printInOrder(root.getRightTree());
+        Set<BSTTreeNode<T>> visitedNode = new HashSet<>();
+        Stack<BSTTreeNode<T>> stack = new java.util.Stack<>();
+        stack.push(root);
+        while (!stack.empty()) {
+            BSTTreeNode<T> top = stack.pop();
+            if (top.getLeftTree() == null && top.getRightTree() == null) {
+                System.out.print(top + "->");
+            } else if (visitedNode.contains(top)) {
+                System.out.print(top + "->");
+            } else {
+                visitedNode.add(top);
+                if (top.getRightTree() != null) {
+                    stack.push(top.getRightTree());
+                }
+                if (top.getLeftTree() != null) {
+                    stack.push(top.getLeftTree());
+                }
+                stack.push(top);
+
+            }
         }
     }
 
     public static <T> void postOrder(BSTTreeNode<T> root) {
+        System.out.println("+++++Post Order+++++++");
         if (root == null) {
             return;
         }
-        if (root.getLeftTree() != null) {
-            printInOrder(root.getLeftTree());
+        Set<BSTTreeNode<T>> visitedNode = new HashSet<>();
+        Stack<BSTTreeNode<T>> stack = new java.util.Stack<>();
+        stack.push(root);
+        while (!stack.empty()) {
+            BSTTreeNode<T> top = stack.pop();
+            if (top.getLeftTree() == null && top.getRightTree() == null) {
+                System.out.print(top + "->");
+            } else if (visitedNode.contains(top)) {
+                System.out.print(top + "->");
+            } else {
+                visitedNode.add(top);
+                stack.push(top);
+                if (top.getRightTree() != null) {
+                    stack.push(top.getRightTree());
+                }
+                if (top.getLeftTree() != null) {
+                    stack.push(top.getLeftTree());
+                }
+
+            }
         }
-        if (root.getRightTree() != null) {
-            printInOrder(root.getRightTree());
-        }
-        System.out.println(root.getData() + "->");
     }
 }
